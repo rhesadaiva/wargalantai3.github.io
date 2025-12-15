@@ -3,29 +3,205 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UNDANGAN MAKAN BERSAMA</title>
+    <title>Makan Siang Warga TI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    
     <style>
+        /* Base Setup */
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Roboto', sans-serif;
+            background-color: #f7f3ed;
+            margin: 0;
+            padding: 0;
+            color: #4b5320;
             text-align: center;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background-image: url('https://via.placeholder.com/800x1200/f7f3ed/d4c7b8?text=Pola+Daun+Latar+Belakang');
+            background-size: cover;
+            background-attachment: fixed;
+            font-size: 16px;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 600px;
+            margin: 0 auto;
             padding: 20px;
-            background-color: #f5f5f5;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
         }
-        h1 {
-            color: #333;
-            font-size: 2.5em;
-            margin-bottom: 30px;
-        }
-        img {
-            max-width: 100%;
+
+        /* Header/Hero Section */
+        .food-hero img {
+            width: 100%;
             height: auto;
+            max-height: 350px;
+            object-fit: contain; 
             border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        /* Invitation Content */
+        .tagline { font-size: 1.2em; margin-bottom: -10px; font-weight: 700; letter-spacing: 2px; }
+        h1 { font-family: 'Playfair Display', serif; font-size: 3em; color: #38761d; margin: 10px 0 30px 0; line-height: 1.1; }
+
+        /* Details Section */
+        .details { display: flex; justify-content: space-around; align-items: center; padding: 20px 0; margin-bottom: 30px; border-top: 2px solid #d4c7b8; border-bottom: 2px solid #d4c7b8; }
+        .detail-box { flex-grow: 1; padding: 0 5px; display: flex; flex-direction: column; align-items: center; }
+        .detail-box .value { font-size: 1.5em; font-weight: 700; color: #cc0000; margin-bottom: 5px; text-decoration: none; }
+        .date .value { font-family: 'Playfair Display', serif; font-size: 2.5em; }
+        .confirmation .value.phone { font-size: 1.2em; color: #cc0000; font-weight: 700; word-break: break-word; }
+
+
+        /* MENU SECTION CHANGES (New Grid Layout) */
+        .menu-section {
+            padding: 20px 0;
+            text-align: center; /* Center the title */
+            background-color: rgba(255, 255, 255, 0.85); 
+            border-radius: 10px;
+            margin: 20px 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .menu-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8em;
+            color: #38761d;
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        .menu-grid {
+            display: grid;
+            /* Default: Two columns on desktop */
+            grid-template-columns: 1fr 1fr; 
+            gap: 15px;
+            padding: 0 15px; /* Add padding inside the menu section */
+            text-align: left;
+        }
+
+        /* Card styles adjusted for static grid */
+        .menu-card {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            padding: 8px;
+            height: 230px; /* Keep consistent height */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .menu-card img {
+            width: 100%;
+            height: 80%;
+            object-fit: contain; 
+            border-radius: 6px;
+            padding: 5px 0;
+        }
+
+        .menu-card p {
+            font-size: 1em;
+            font-weight: 700;
+            color: #4b5320;
+            margin: 5px 0 0 0;
+        }
+
+        /* Footer (No functional changes) */
+        .footer { margin-top: 20px; }
+        .website-link { font-size: 1em; font-weight: 700; color: #38761d; text-decoration: none; letter-spacing: 1px; padding: 5px 10px; border: 1px solid #38761d; border-radius: 5px; }
+
+
+        /* ---------------------------------------------------------------------- */
+        /* RESPONSIVENESS: Mobile Devices (Screens up to 500px) */
+        /* ---------------------------------------------------------------------- */
+        @media (max-width: 500px) {
+            /* Fluid Typography Adjustment */
+            body { font-size: 14px; }
+            h1 { font-size: 2.5em; }
+
+            /* Details Section Layout Stacked */
+            .details { flex-direction: column; padding: 10px 0; }
+            .detail-box { width: 100%; margin: 10px 0; }
+            
+            /* Menu Grid Adjustment for Mobile: Stack 1 column */
+            .menu-grid {
+                grid-template-columns: 1fr; /* Change to single column */
+                padding: 0 10px;
+            }
+            .menu-card {
+                height: 250px; /* Adjust height for full width card */
+            }
         }
     </style>
 </head>
 <body>
-    <h1>UNDANGAN MAKAN BERSAMA</h1>
-    <img src="post.jpg" alt="Gambar Makan Bersama">
+
+    <div class="container">
+        <header class="food-hero">
+            <img src="http://googleusercontent.com/image_collection/image_retrieval/4383333687018307530_0" alt="Makan Siang Warga TI Invitation Poster">
+        </header>
+
+        <main class="invitation-content">
+            <p class="tagline">MENGUNDANG</p>
+            <h1>Makan Siang <br>Warga TI</h1>
+        </main>
+        
+        <section class="menu-section">
+            <h2>Menu Makan Siang</h2>
+            <div class="menu-grid">
+                
+                <div class="menu-card">
+                    <img src="http://googleusercontent.com/image_collection/image_retrieval/18394059763057964951_0" alt="Nasi Liwet">
+                    <p>Nasi Liwet</p>
+                </div>
+                
+                <div class="menu-card">
+                    <img src="http://googleusercontent.com/image_collection/image_retrieval/1885532013576402830_0" alt="Pudding">
+                    <p>Pudding</p>
+                </div>
+                
+                <div class="menu-card">
+                    <img src="http://googleusercontent.com/image_collection/image_retrieval/6467083399608260872_0" alt="Es Kelapa Muda">
+                    <p>Es Kelapa Muda</p>
+                </div>
+                
+                <div class="menu-card">
+                    <img src="http://googleusercontent.com/image_collection/image_retrieval/6644551570024596975_0" alt="Ayam Goreng">
+                    <p>Ayam Goreng</p>
+                </div>
+
+            </div>
+        </section>
+
+
+        <section class="details">
+            <div class="detail-box date">
+                <span class="value">16</span>
+                <span class="label">DES</span>
+            </div>
+            <div class="detail-box time-location">
+                <span class="value">⏰ 12.00 WIB</span>
+                <span class="label">📍 Rooftop Lantai 3</span>
+            </div>
+            <div class="detail-box confirmation">
+                <span class="label">KONFIRMASI KEHADIRAN</span>
+                <span class="value phone">📞 082246440443</span>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <a href="https://www.wargatilaNTAI3.com" target="_blank" class="website-link">WWW.WARGATILANTAI3.COM</a>
+        </footer>
+    </div>
+    
 </body>
 </html>
