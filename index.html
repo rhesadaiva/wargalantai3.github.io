@@ -37,21 +37,10 @@
             border-radius: 12px;
         }
 
-        /* Header/Hero Section */
-        .food-hero img {
-            width: 100%;
-            height: auto;
-            max-height: 350px;
-            object-fit: contain; 
-            border-radius: 10px;
-            margin-bottom: 20px;
-        }
-
-        /* Invitation Content */
+        /* Header/Hero Section & Details (No functional changes) */
+        .food-hero img { width: 100%; height: auto; max-height: 350px; object-fit: contain; border-radius: 10px; margin-bottom: 20px; }
         .tagline { font-size: 1.2em; margin-bottom: -10px; font-weight: 700; letter-spacing: 2px; }
         h1 { font-family: 'Playfair Display', serif; font-size: 3em; color: #38761d; margin: 10px 0 30px 0; line-height: 1.1; }
-
-        /* Details Section */
         .details { display: flex; justify-content: space-around; align-items: center; padding: 20px 0; margin-bottom: 30px; border-top: 2px solid #d4c7b8; border-bottom: 2px solid #d4c7b8; }
         .detail-box { flex-grow: 1; padding: 0 5px; display: flex; flex-direction: column; align-items: center; }
         .detail-box .value { font-size: 1.5em; font-weight: 700; color: #cc0000; margin-bottom: 5px; text-decoration: none; }
@@ -59,10 +48,10 @@
         .confirmation .value.phone { font-size: 1.2em; color: #cc0000; font-weight: 700; word-break: break-word; }
 
 
-        /* MENU SECTION CHANGES (New Grid Layout) */
+        /* MENU SECTION GRID CONTAINER */
         .menu-section {
             padding: 20px 0;
-            text-align: center; /* Center the title */
+            text-align: center;
             background-color: rgba(255, 255, 255, 0.85); 
             border-radius: 10px;
             margin: 20px 0;
@@ -78,31 +67,45 @@
             margin-bottom: 15px;
         }
 
-        .menu-grid {
+        /* New: Styling for each menu row */
+        .menu-row {
             display: grid;
-            /* Default: Two columns on desktop */
-            grid-template-columns: 1fr 1fr; 
-            gap: 15px;
-            padding: 0 15px; /* Add padding inside the menu section */
-            text-align: left;
+            gap: 10px; /* Reduced gap slightly for 3 columns */
+            padding: 0 10px 10px; /* Add bottom padding between rows */
+        }
+        
+        /* Row 1: Single item (Nasi Liwet) */
+        .menu-row-1 {
+            grid-template-columns: 1fr; /* 1 column */
         }
 
-        /* Card styles adjusted for static grid */
+        /* Row 2 & 3: Three items */
+        .menu-row-2,
+        .menu-row-3 {
+            grid-template-columns: 1fr 1fr 1fr; /* 3 columns */
+        }
+        
+        /* Card styles adjusted for better horizontal aspect ratio */
         .menu-card {
             background: #fff;
             border-radius: 8px;
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
             text-align: center;
             padding: 8px;
-            height: 230px; /* Keep consistent height */
+            height: 180px; /* Reduced height for a more horizontal look */
             display: flex;
             flex-direction: column;
             justify-content: space-between;
         }
 
+        /* Card in the first row should be taller/stand out */
+        .menu-row-1 .menu-card {
+            height: 250px;
+        }
+
         .menu-card img {
             width: 100%;
-            height: 80%;
+            height: 75%; /* Allocate 75% height for the image */
             object-fit: contain; 
             border-radius: 6px;
             padding: 5px 0;
@@ -124,21 +127,19 @@
         /* RESPONSIVENESS: Mobile Devices (Screens up to 500px) */
         /* ---------------------------------------------------------------------- */
         @media (max-width: 500px) {
-            /* Fluid Typography Adjustment */
+            /* General & Details */
             body { font-size: 14px; }
             h1 { font-size: 2.5em; }
-
-            /* Details Section Layout Stacked */
             .details { flex-direction: column; padding: 10px 0; }
             .detail-box { width: 100%; margin: 10px 0; }
             
-            /* Menu Grid Adjustment for Mobile: Stack 1 column */
-            .menu-grid {
-                grid-template-columns: 1fr; /* Change to single column */
-                padding: 0 10px;
+            /* Menu Grid Adjustment for Mobile: Everything stacks 1 column */
+            .menu-row {
+                grid-template-columns: 1fr; /* Force single column on mobile */
+                padding: 0 10px 10px;
             }
             .menu-card {
-                height: 250px; /* Adjust height for full width card */
+                 height: 200px; /* Adjust height for full width card */
             }
         }
     </style>
@@ -157,29 +158,44 @@
         
         <section class="menu-section">
             <h2>Menu Makan Siang</h2>
-            <div class="menu-grid">
-                
+            
+            <div class="menu-row menu-row-1">
                 <div class="menu-card">
                     <img src="nasiliwet.jpg" alt="Nasi Liwet">
-                    <p>Nasi Liwet</p>
+                    <p>Nasi Liwet (Hidangan Utama)</p>
                 </div>
-                
-                <div class="menu-card">
-                    <img src="pudingbuah.jpg" alt="Pudding">
-                    <p>Pudding</p>
-                </div>
-                
-                <div class="menu-card">
-                    <img src="eskelapa.jpg" alt="Es Kelapa Muda">
-                    <p>Es Kelapa Muda</p>
-                </div>
-                
+            </div>
+
+            <div class="menu-row menu-row-2">
                 <div class="menu-card">
                     <img src="ayamgoreng.jpg" alt="Ayam Goreng">
                     <p>Ayam Goreng</p>
                 </div>
-
+                <div class="menu-card">
+                    <img src="eskelapa.jpg" alt="Es Kelapa Muda">
+                    <p>Es Kelapa Muda</p>
+                </div>
+                <div class="menu-card">
+                    <img src="donut.jpg" alt="JCO Donuts">
+                    <p>JCO Donuts</p>
+                </div>
             </div>
+
+            <div class="menu-row menu-row-3">
+                <div class="menu-card">
+                    <img src="puyo.jpg" alt="Pudding">
+                    <p>Pudding</p>
+                </div>
+                <div class="menu-card">
+                    <img src="salak.jpg" alt="Salak">
+                    <p>Salak</p>
+                </div>
+                <div class="menu-card">
+                    <img src="jeruk.jpg" alt="Jeruk">
+                    <p>Jeruk</p>
+                </div>
+            </div>
+
         </section>
 
 
@@ -189,7 +205,7 @@
                 <span class="label">DES</span>
             </div>
             <div class="detail-box time-location">
-                <span class="value">⏰ 12.00 WIB</span>
+                <span class="value">⏰ 11.30 WIB</span>
                 <span class="label">📍 Rooftop Lantai 3</span>
             </div>
             <div class="detail-box confirmation">
@@ -199,6 +215,7 @@
         </section>
 
         <footer class="footer">
+            
             <a href="https://www.wargatilaNTAI3.com" target="_blank" class="website-link">WWW.WARGATILANTAI3.COM</a>
         </footer>
     </div>
